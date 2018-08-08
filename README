@@ -1,0 +1,6 @@
+#TweetLinkBot
+
+This is a bot that will parse images posted and try to determine if it is a possible tweet. If it is, it searches twitter for the actual tweet link and replies with a comment if it finds a result.
+
+More details coming soon :)
+PRs welcome!
