@@ -7,7 +7,7 @@ import re
 import time
 
 import praw
-from prawcore.exceptions import RequestException
+from prawcore.exceptions import PrawcoreException
 
 from tlb.linktweet import link_tweet
 from tlb.taskqueue import TaskQueue
@@ -74,8 +74,11 @@ class Bot:
         except praw.exceptions.APIException:
             logger.exception('Something wrong with the API... Waiting 1 minute  and retrying...')
             time.sleep(60)
-        except RequestException:
-            logger.exception('Something went wrong while dealing with Reddit. Attempting to restart in 5 seconds...')
+        except praw.exceptions.PRAWException:
+            logger.exception('Something wrong with PRAW. Attempting to restart in 5 seconds...')
+            time.sleep(5)
+        except PrawcoreException:
+            logger.exception('Something went wrong while dealing with Prawcore. Attempting to restart in 5 seconds...')
             time.sleep(5)
         self.run()
 

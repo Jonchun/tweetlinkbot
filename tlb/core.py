@@ -35,7 +35,7 @@ def main():
         load_dotenv(find_dotenv())
         logger.info('Starting TweetLinkBot...')
         bot = Bot(
-                workers=10,
+                workers=1,
                 subreddit='all',
                 username=os.getenv("BOT_USERNAME"),
                 password=os.getenv("BOT_PASSWORD"),
